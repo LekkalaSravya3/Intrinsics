@@ -1,0 +1,93 @@
+	.file	"add.cpp"
+	.text
+	.p2align 4
+	.globl	_Z17add_matrices_simdPfS_S_ii
+	.type	_Z17add_matrices_simdPfS_S_ii, @function
+_Z17add_matrices_simdPfS_S_ii:
+.LFB7285:
+	.cfi_startproc
+	endbr64
+	imull	%r8d, %ecx
+	testl	%ecx, %ecx
+	jle	.L5
+	xorl	%eax, %eax
+	.p2align 4,,10
+	.p2align 3
+.L3:
+	vmovups	(%rdi,%rax,4), %xmm1
+	vaddps	(%rsi,%rax,4), %xmm1, %xmm0
+	vmovups	%xmm0, (%rdx,%rax,4)
+	addq	$4, %rax
+	cmpl	%eax, %ecx
+	jg	.L3
+
+main:
+.LFB7286:
+	.cfi_startproc
+	endbr64
+	pushq	%r15
+	.cfi_def_cfa_offset 16
+	.cfi_offset 15, -16
+	vpxor	%xmm0, %xmm0, %xmm0
+	pushq	%r14
+	.cfi_def_cfa_offset 24
+	.cfi_offset 14, -24
+	pushq	%r13
+	.cfi_def_cfa_offset 32
+	.cfi_offset 13, -32
+	pushq	%r12
+	.cfi_def_cfa_offset 40
+	.cfi_offset 12, -40
+	pushq	%rbp
+	.cfi_def_cfa_offset 48
+	.cfi_offset 6, -48
+	pushq	%rbx
+	.cfi_def_cfa_offset 56
+	.cfi_offset 3, -56
+	subq	$216, %rsp
+	.cfi_def_cfa_offset 272
+	vmovaps	.LC0(%rip), %xmm1
+	movq	%fs:40, %rax
+	movq	%rax, 200(%rsp)
+	movabsq	$4611686019492741120, %rax
+	leaq	128(%rsp), %rbp
+	vmovdqa	%xmm0, 128(%rsp)
+	vmovdqa	%xmm0, 144(%rsp)
+	vmovdqa	%xmm0, 160(%rsp)
+	vmovdqa	%xmm0, 176(%rsp)
+	vmovaps	.LC1(%rip), %xmm0
+	movq	%rax, (%rsp)
+	movabsq	$4647714816524288000, %rax
+	movq	%rax, 8(%rsp)
+	movabsq	$4665729215040061440, %rax
+	movq	%rax, 16(%rsp)
+	movabsq	$4683743613553737728, %rax
+	movq	%rax, 24(%rsp)
+	movabsq	$4692750812811624448, %rax
+	movq	%rax, 32(%rsp)
+	movabsq	$4701758012068462592, %rax
+	movq	%rax, 40(%rsp)
+	movabsq	$4710765211325300736, %rax
+	movq	%rax, 48(%rsp)
+	movabsq	$4719772410582138880, %rax
+	movq	%rax, 56(%rsp)
+	movabsq	$4715268810955816960, %rax
+	movq	%rax, 64(%rsp)
+	movabsq	$4706261611698978816, %rax
+	movq	%rax, 72(%rsp)
+	movabsq	$4697254412442140672, %rax
+	movq	%rax, 80(%rsp)
+	movabsq	$4688247213185302528, %rax
+	movq	%rax, 88(%rsp)
+	movabsq	$4674736414301093888, %rax
+	movq	%rax, 96(%rsp)
+	movabsq	$4656722015787417600, %rax
+	movq	%rax, 104(%rsp)
+	movabsq	$4629700418019000320, %rax
+	movq	%rax, 112(%rsp)
+	movabsq	$4575657222482165760, %rax
+	movq	%rax, 120(%rsp)
+	xorl	%eax, %eax
+	jmp	.L9
+	.p2align 4,,10
+	.p2align 3

@@ -1,0 +1,64 @@
+	.file	"add.cpp"
+	.text
+	.p2align 4
+	.globl	_Z17add_matrices_simdPfS_S_ii
+	.type	_Z17add_matrices_simdPfS_S_ii, @function
+_Z17add_matrices_simdPfS_S_ii:
+.LFB7285:
+	.cfi_startproc
+	endbr64
+	imull	%r8d, %ecx
+	testl	%ecx, %ecx
+	jle	.L5
+	xorl	%eax, %eax
+	.p2align 4,,10
+	.p2align 3
+.L3:
+	vmovups	(%rdi,%rax,4), %xmm1
+	vaddps	(%rsi,%rax,4), %xmm1, %xmm0
+	vmovups	%xmm0, (%rdx,%rax,4)
+	addq	$4, %rax
+	cmpl	%eax, %ecx
+	jg	.L3
+
+main:
+.LFB7286:
+	.cfi_startproc
+	endbr64
+	pushq	%r15
+	.cfi_def_cfa_offset 16
+	.cfi_offset 15, -16
+	movl	$20, %edx
+	leaq	.LC1(%rip), %rsi
+	leaq	.LC3(%rip), %r15
+	pushq	%r14
+	.cfi_def_cfa_offset 24
+	.cfi_offset 14, -24
+	xorl	%r14d, %r14d
+	pushq	%r13
+	.cfi_def_cfa_offset 32
+	.cfi_offset 13, -32
+	leaq	.LC2(%rip), %r13
+	pushq	%r12
+	.cfi_def_cfa_offset 40
+	.cfi_offset 12, -40
+	leaq	_ZSt4cout(%rip), %r12
+	pushq	%rbp
+	.cfi_def_cfa_offset 48
+	.cfi_offset 6, -48
+	movq	%r12, %rdi
+	pushq	%rbx
+	.cfi_def_cfa_offset 56
+	.cfi_offset 3, -56
+	subq	$88, %rsp
+	.cfi_def_cfa_offset 144
+	vmovaps	.LC0(%rip), %xmm0
+	movq	%fs:40, %rax
+	movq	%rax, 72(%rsp)
+	xorl	%eax, %eax
+	movq	%rsp, %rbp
+	vmovaps	%xmm0, (%rsp)
+	vmovaps	%xmm0, 16(%rsp)
+	vmovaps	%xmm0, 32(%rsp)
+	vmovaps	%xmm0, 48(%rsp)
+	call	_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l@PLT

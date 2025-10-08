@@ -1,0 +1,120 @@
+	.file	"add.cpp"
+	.text
+	.globl	_Z17add_matrices_simdPfS_S_ii
+	.type	_Z17add_matrices_simdPfS_S_ii, @function
+_Z17add_matrices_simdPfS_S_ii:
+.LFB7285:
+	.cfi_startproc
+	endbr64
+	imull	%r8d, %ecx
+	testl	%ecx, %ecx
+	jle	.L1
+	movl	$0, %eax
+.L3:
+	vmovups	(%rdi,%rax,4), %xmm1
+	vaddps	(%rsi,%rax,4), %xmm1, %xmm0
+	vmovups	%xmm0, (%rdx,%rax,4)
+	addq	$4, %rax
+	cmpl	%eax, %ecx
+	jg	.L3
+.L1:
+	ret
+	.cfi_endproc
+
+main:
+.LFB7286:
+	.cfi_startproc
+	endbr64
+	pushq	%r15
+	.cfi_def_cfa_offset 16
+	.cfi_offset 15, -16
+	pushq	%r14
+	.cfi_def_cfa_offset 24
+	.cfi_offset 14, -24
+	pushq	%r13
+	.cfi_def_cfa_offset 32
+	.cfi_offset 13, -32
+	pushq	%r12
+	.cfi_def_cfa_offset 40
+	.cfi_offset 12, -40
+	pushq	%rbp
+	.cfi_def_cfa_offset 48
+	.cfi_offset 6, -48
+	pushq	%rbx
+	.cfi_def_cfa_offset 56
+	.cfi_offset 3, -56
+	subq	$216, %rsp
+	.cfi_def_cfa_offset 272
+	movq	%fs:40, %rax
+	movq	%rax, 200(%rsp)
+	xorl	%eax, %eax
+	vmovss	.LC0(%rip), %xmm0
+	vmovss	%xmm0, (%rsp)
+	vmovss	.LC1(%rip), %xmm1
+	vmovss	%xmm1, 4(%rsp)
+	vmovss	.LC2(%rip), %xmm2
+	vmovss	%xmm2, 8(%rsp)
+	vmovss	.LC3(%rip), %xmm3
+	vmovss	%xmm3, 12(%rsp)
+	vmovss	.LC4(%rip), %xmm4
+	vmovss	%xmm4, 16(%rsp)
+	vmovss	.LC5(%rip), %xmm5
+	vmovss	%xmm5, 20(%rsp)
+	vmovss	.LC6(%rip), %xmm6
+	vmovss	%xmm6, 24(%rsp)
+	vmovss	.LC7(%rip), %xmm7
+	vmovss	%xmm7, 28(%rsp)
+	vmovss	.LC8(%rip), %xmm8
+	vmovss	%xmm8, 32(%rsp)
+	vmovss	.LC9(%rip), %xmm9
+	vmovss	%xmm9, 36(%rsp)
+	vmovss	.LC10(%rip), %xmm10
+	vmovss	%xmm10, 40(%rsp)
+	vmovss	.LC11(%rip), %xmm11
+	vmovss	%xmm11, 44(%rsp)
+	vmovss	.LC12(%rip), %xmm12
+	vmovss	%xmm12, 48(%rsp)
+	vmovss	.LC13(%rip), %xmm13
+	vmovss	%xmm13, 52(%rsp)
+	vmovss	.LC14(%rip), %xmm14
+	vmovss	%xmm14, 56(%rsp)
+	vmovss	.LC15(%rip), %xmm15
+	vmovss	%xmm15, 60(%rsp)
+	vmovss	%xmm15, 64(%rsp)
+	vmovss	%xmm14, 68(%rsp)
+	vmovss	%xmm13, 72(%rsp)
+	vmovss	%xmm12, 76(%rsp)
+	vmovss	%xmm11, 80(%rsp)
+	vmovss	%xmm10, 84(%rsp)
+	vmovss	%xmm9, 88(%rsp)
+	vmovss	%xmm8, 92(%rsp)
+	vmovss	%xmm7, 96(%rsp)
+	vmovss	%xmm6, 100(%rsp)
+	vmovss	%xmm5, 104(%rsp)
+	vmovss	%xmm4, 108(%rsp)
+	vmovss	%xmm3, 112(%rsp)
+	vmovss	%xmm2, 116(%rsp)
+	vmovss	%xmm1, 120(%rsp)
+	vmovss	%xmm0, 124(%rsp)
+	movq	$0, 128(%rsp)
+	movq	$0, 136(%rsp)
+	movq	$0, 144(%rsp)
+	movq	$0, 152(%rsp)
+	movq	$0, 160(%rsp)
+	movq	$0, 168(%rsp)
+	movq	$0, 176(%rsp)
+	movq	$0, 184(%rsp)
+	leaq	128(%rsp), %rbp
+	leaq	64(%rsp), %rsi
+	movq	%rsp, %rdi
+	movl	$4, %r8d
+	movl	$4, %ecx
+	movq	%rbp, %rdx
+	call	_Z17add_matrices_simdPfS_S_ii
+	leaq	.LC16(%rip), %rsi
+	leaq	_ZSt4cout(%rip), %rdi
+	call	_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@PLT
+	movl	$0, %r14d
+	leaq	_ZSt4cout(%rip), %r12
+	leaq	.LC17(%rip), %r13
+	leaq	.LC18(%rip), %r15
